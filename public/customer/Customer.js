@@ -14,7 +14,6 @@
             restrict: 'E',
             scope:{
                 customer: '=',
-
                 onRemoved: '&',
                 onServed: '&'
             },
@@ -30,8 +29,18 @@
                         url: '/api/customer/remove',
                         params: {id: scope.customer.id}
                     }).then(function(res){
-                        scope.onRemoved()()
-                    })
+                        scope.onRemoved();
+                    });
+                };
+
+                scope.serve = function(){
+                    $http({
+                        method: 'POST',
+                        url: '/api/customer/serve',
+                        data: {id: scope.customer.id}
+                    }).then(function(res){
+                        scope.onServed();
+                    });
                 };
             }
         }

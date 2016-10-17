@@ -19,7 +19,22 @@
                 ];
 
                 scope.addCustomer = function(){
-
+					var name = scope.name;
+					var product = scope.product;
+					
+					var customer = {
+						name: name,
+						product: product,
+						joinedTime: new Date().toString()
+					};
+					
+					$http({
+                        method: 'POST',
+                        url: '/api/customer/add',
+                        data: customer
+                    }).then(function(res){
+                        scope.onAdded()()
+                    })
                 }
             }
         }
