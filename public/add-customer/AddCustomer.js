@@ -1,6 +1,6 @@
 (function () {
     angular.module('qudini.QueueApp')
-        .directive('addCustomer', AddCustomer)
+        .directive('addCustomer', ['$http', AddCustomer])
 
 
     function AddCustomer($http){

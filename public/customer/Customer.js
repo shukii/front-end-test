@@ -1,6 +1,6 @@
 (function () {
-    angular.module('qudini.QueueApp', [])
-        .directive('customer', Customer)
+    angular.module('qudini.QueueApp')
+        .directive('customer', ['$http', Customer])
 
     /**
      * The <customer> directive is responsible for:

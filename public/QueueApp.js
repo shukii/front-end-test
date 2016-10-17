@@ -1,7 +1,7 @@
 (function () {
 
-    angular.module('qudini.QueueApp', [])
-        .controller('QueueCtrl', QueueCtrl)
+    var app = angular.module('qudini.QueueApp', [])
+        app.controller('QueueCtrl', ['$scope', '$http', QueueCtrl])
 
     /**
      * Bonus points - manipulating the without waiting for the
@@ -24,19 +24,19 @@
 
         $scope.onCustomerServed = function(){
             _getCustomers();
-            _getServedCustomers()
+            _getServedCustomers();
         }
 
         function _getServedCustomers(){
             return $http.get('/api/customers/served').then(function(res){
                 $scope.customersServed = res.data;
-            })
+            });
         }
 
         function _getCustomers(){
             return $http.get('/api/customers').then(function(res){
                 $scope.customers = res.data;
-            })
+            });
         }
     }
 
